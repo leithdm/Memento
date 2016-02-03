@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Memento" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,47 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V4a-kx-HOL">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Pick" id="8Iv-Yp-NAk">
+                                        <connections>
+                                            <action selector="pickImageFromAlbum:" destination="BYZ-38-t0r" id="Npr-Pb-Uoj"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Camera" id="yVn-EO-BIq">
+                                        <connections>
+                                            <action selector="pickImageFromCamera:" destination="BYZ-38-t0r" id="aqw-rS-vaK"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DUY-Me-DUB">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="V4a-kx-HOL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2Xo-Ue-7XL"/>
+                            <constraint firstItem="DUY-Me-DUB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="EVl-ib-aFG"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="V4a-kx-HOL" secondAttribute="bottom" id="cSW-K6-Nws"/>
+                            <constraint firstItem="DUY-Me-DUB" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gOE-Tz-AHP"/>
+                            <constraint firstItem="V4a-kx-HOL" firstAttribute="top" secondItem="DUY-Me-DUB" secondAttribute="bottom" id="gsl-FN-q6h"/>
+                            <constraint firstAttribute="trailing" secondItem="DUY-Me-DUB" secondAttribute="trailing" id="iWu-iU-R97"/>
+                            <constraint firstAttribute="trailing" secondItem="V4a-kx-HOL" secondAttribute="trailing" id="lws-OY-wLJ"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="bh3-Pf-N7n"/>
+                    <navigationItem key="navigationItem" id="4IP-yz-f7f"/>
+                    <connections>
+                        <outlet property="cameraButton" destination="yVn-EO-BIq" id="XSv-xN-8hM"/>
+                        <outlet property="image" destination="DUY-Me-DUB" id="0gA-dl-hmM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="4056" y="521"/>
         </scene>
     </scenes>
 </document>
