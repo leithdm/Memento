@@ -16,15 +16,17 @@ class ViewController: UIViewController {
     static let keyboardWillHide = "UIKeyboardWillHideNotification"
   }
   
+  //MARK: - properties
   @IBOutlet weak var imageView: UIImageView!
   @IBOutlet weak var cameraButton: UIBarButtonItem!
   @IBOutlet weak var topTextField: UITextField!
   @IBOutlet weak var bottomTextField: UITextField!
   @IBOutlet weak var toolBar: UIToolbar!
+  @IBOutlet weak var shareIcon: UIBarButtonItem!
   
-  //optional for currently edited textField
   var activeField: UITextField?
   var memedImage: UIImage?
+  var keyboardUp: Bool = false
   
   //meme text attributes
   let memeTextAttributes = [
@@ -33,7 +35,7 @@ class ViewController: UIViewController {
     NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
     NSStrokeWidthAttributeName: -3.0
   ]
-
+  
   
   //MARK: - lifecycle methods
   override func viewDidLoad() {
@@ -45,11 +47,11 @@ class ViewController: UIViewController {
     self.topTextField.delegate = self
     self.bottomTextField.delegate = self
     
-    //share icon
-    navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "shareMeme")
     //cancel icon
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: "cancelMeme")
     
+    //shareButton icon disabled
+    shareIcon.enabled = false
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -60,12 +62,25 @@ class ViewController: UIViewController {
     subscribeToKeyboardWillHideNotification()
     
     setBackgroundColor()
+    loadAnimations()
   }
   
   override func viewWillDisappear(animated: Bool) {
     super.viewWillDisappear(animated)
     unsubscribeFromKeyboardWillShowNotification()
     unsubscribeFromKeyboardWillHideNotification()
+  }
+  
+  //MARK: - loadAnimations
+  func loadAnimations() {
+    //Moving elements off-screen prior to being shown
+    topTextField.center.x += view.bounds.width
+    bottomTextField.center.y += view.bounds.height
+    //Banner at top of view
+    UIView.animateWithDuration(0.6, delay: 0, options: [.CurveEaseOut], animations: { () -> Void in
+      self.topTextField.center.x -= self.view.bounds.width
+      self.bottomTextField.center.y -= self.view.bounds.height
+      }, completion: nil)
   }
   
   //MARK: - setMemeAttributes
@@ -75,13 +90,16 @@ class ViewController: UIViewController {
     bottomTextField.defaultTextAttributes = memeTextAttributes
     topTextField.defaultTextAttributes = memeTextAttributes
     
-    //set placeholder text
-    topTextField.text = "TOP"
-    bottomTextField.text = "BOTTOM"
-    
     //set alignment of text
     topTextField.textAlignment = .Center
     bottomTextField.textAlignment = .Center
+  }
+  
+  //set placeholder text
+  func setPlaceholderText() {
+    topTextField.text = "TOP"
+    bottomTextField.text = "BOTTOM"
+    
   }
   
   func setBackgroundColor() {
@@ -100,9 +118,10 @@ class ViewController: UIViewController {
   }
   
   func keyboardWillAppear(notification: NSNotification) {
-    if let active = activeField {
+    if let active = activeField where !keyboardUp {
       if active == bottomTextField {
         self.view.frame.origin.y -= getKeyboardHeight(notification)
+        keyboardUp = true
       }
     }
   }
@@ -111,6 +130,7 @@ class ViewController: UIViewController {
     if let active = activeField {
       if active == bottomTextField {
         self.view.frame.origin.y += getKeyboardHeight(notification)
+        keyboardUp = false
       }
     }
   }
@@ -146,6 +166,7 @@ class ViewController: UIViewController {
   @IBAction func pickImageFromCamera(sender: UIBarButtonItem) {
     let imagePicker = UIImagePickerController()
     imagePicker.delegate = self
+    imagePicker.allowsEditing = true
     imagePicker.sourceType = .Camera
     self.presentViewController(imagePicker, animated: true, completion: nil)
   }
@@ -156,7 +177,7 @@ class ViewController: UIViewController {
     
     let textStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
     textStyle.alignment = NSTextAlignment.Center
-
+    
     //different textSytyle and font-size compared to memeTextOneAttributes used previously
     let memeTextTwoAttributes = [
       NSStrokeColorAttributeName: UIColor.blackColor(), //outline color
@@ -172,11 +193,11 @@ class ViewController: UIViewController {
     
     //put the image in a rectangle as large as the original image
     imageToManipulate.drawInRect(CGRectMake(0, 0, imageToManipulate.size.width, imageToManipulate.size.height))
-
+    
     //create the points in the space that is as big as the image
     let rectOne: CGRect = CGRectMake(0, 50, imageToManipulate.size.width, imageToManipulate.size.height)
     let rectTwo: CGRect = CGRectMake(0, imageToManipulate.size.height - 150, imageToManipulate.size.width, imageToManipulate.size.height)
-  
+    
     //draw the text into the image
     (topTextField.text! as NSString).drawInRect(rectOne, withAttributes: memeTextTwoAttributes)
     (bottomTextField.text! as NSString).drawInRect(rectTwo, withAttributes: memeTextTwoAttributes)
@@ -191,13 +212,12 @@ class ViewController: UIViewController {
   //save meme
   func saveMeme() {
     let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: generateMeme())
-    
     (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
   }
   
   //MARK: - share the meme
   
-  func shareMeme() {
+  @IBAction func shareMeme(sender: UIBarButtonItem) {
     generateMeme()
     
     let activityVC = UIActivityViewController(activityItems: [memedImage!], applicationActivities: .None)
@@ -206,11 +226,12 @@ class ViewController: UIViewController {
     })
   }
   
+  
   //MARK: - cancel meme
   func cancelMeme() {
     imageView.image = nil
-    topTextField.text = "TOP"
-    bottomTextField.text = "BOTTOM"
+    setPlaceholderText()
+    shareIcon.enabled = false
     setBackgroundColor()
   }
 }
@@ -237,6 +258,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     
     dismissViewControllerAnimated(true, completion: nil)
     self.imageView.image = newImage
+    shareIcon.enabled = true
   }
 }
 
