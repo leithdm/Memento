@@ -14,6 +14,10 @@
 		018980941C6226E500CC4C03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 018980921C6226E500CC4C03 /* LaunchScreen.storyboard */; };
 		0189809F1C6226E600CC4C03 /* MementoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0189809E1C6226E600CC4C03 /* MementoTests.swift */; };
 		018980AA1C6226E600CC4C03 /* MementoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018980A91C6226E600CC4C03 /* MementoUITests.swift */; };
+		01B5106A1C639D0F00469BC1 /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B510691C639D0F00469BC1 /* RandomColor.swift */; };
+		01B5106C1C639D2300469BC1 /* Hue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B5106B1C639D2300469BC1 /* Hue.swift */; };
+		01B5106E1C639D4200469BC1 /* ColorDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B5106D1C639D4200469BC1 /* ColorDefinition.swift */; };
+		01B510701C639D5E00469BC1 /* Luminosity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B5106F1C639D5E00469BC1 /* Luminosity.swift */; };
 		01CC94031C63634100893742 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CC94021C63634100893742 /* Meme.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +52,10 @@
 		018980A51C6226E600CC4C03 /* MementoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MementoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		018980A91C6226E600CC4C03 /* MementoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MementoUITests.swift; sourceTree = "<group>"; };
 		018980AB1C6226E600CC4C03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01B510691C639D0F00469BC1 /* RandomColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
+		01B5106B1C639D2300469BC1 /* Hue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hue.swift; sourceTree = "<group>"; };
+		01B5106D1C639D4200469BC1 /* ColorDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorDefinition.swift; sourceTree = "<group>"; };
+		01B5106F1C639D5E00469BC1 /* Luminosity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Luminosity.swift; sourceTree = "<group>"; };
 		01CC94021C63634100893742 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +114,7 @@
 				018980901C6226E500CC4C03 /* Assets.xcassets */,
 				018980921C6226E500CC4C03 /* LaunchScreen.storyboard */,
 				018980951C6226E500CC4C03 /* Info.plist */,
+				01B510731C63A00400469BC1 /* Supporting Files */,
 			);
 			path = Memento;
 			sourceTree = "<group>";
@@ -126,6 +135,25 @@
 				018980AB1C6226E600CC4C03 /* Info.plist */,
 			);
 			path = MementoUITests;
+			sourceTree = "<group>";
+		};
+		01B510721C639F4E00469BC1 /* RandomColor */ = {
+			isa = PBXGroup;
+			children = (
+				01B510691C639D0F00469BC1 /* RandomColor.swift */,
+				01B5106F1C639D5E00469BC1 /* Luminosity.swift */,
+				01B5106D1C639D4200469BC1 /* ColorDefinition.swift */,
+				01B5106B1C639D2300469BC1 /* Hue.swift */,
+			);
+			name = RandomColor;
+			sourceTree = "<group>";
+		};
+		01B510731C63A00400469BC1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				01B510721C639F4E00469BC1 /* RandomColor */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		01CC94041C63692D00893742 /* Model */ = {
@@ -284,6 +312,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01B5106C1C639D2300469BC1 /* Hue.swift in Sources */,
+				01B5106A1C639D0F00469BC1 /* RandomColor.swift in Sources */,
+				01B510701C639D5E00469BC1 /* Luminosity.swift in Sources */,
+				01B5106E1C639D4200469BC1 /* ColorDefinition.swift in Sources */,
 				01CC94031C63634100893742 /* Meme.swift in Sources */,
 				0189808C1C6226E500CC4C03 /* ViewController.swift in Sources */,
 				0189808A1C6226E500CC4C03 /* AppDelegate.swift in Sources */,

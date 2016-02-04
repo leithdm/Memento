@@ -58,6 +58,8 @@ class ViewController: UIViewController {
     //keyboard notifications
     subscribeToKeyboardWillShowNotification()
     subscribeToKeyboardWillHideNotification()
+    
+    setBackgroundColor()
   }
   
   override func viewWillDisappear(animated: Bool) {
@@ -80,6 +82,11 @@ class ViewController: UIViewController {
     //set alignment of text
     topTextField.textAlignment = .Center
     bottomTextField.textAlignment = .Center
+  }
+  
+  func setBackgroundColor() {
+    let color = randomColor(hue: Hue.Random, luminosity: Luminosity.Light)
+    view.backgroundColor = color
   }
   
   //MARK: - keyboard notifications
@@ -204,6 +211,7 @@ class ViewController: UIViewController {
     imageView.image = nil
     topTextField.text = "TOP"
     bottomTextField.text = "BOTTOM"
+    setBackgroundColor()
   }
 }
 
