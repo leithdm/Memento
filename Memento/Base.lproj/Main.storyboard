@@ -38,6 +38,9 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ucc-8Q-JnY"/>
                                 </items>
                             </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DUY-Me-DUB">
+                                <rect key="frame" x="0.0" y="86" width="600" height="446"/>
+                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="F3b-y3-E5j">
                                 <rect key="frame" x="0.0" y="114" width="600" height="40"/>
                                 <constraints>
@@ -56,9 +59,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DUY-Me-DUB">
-                                <rect key="frame" x="0.0" y="86" width="600" height="446"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.12637259066104889" green="0.12639245390892029" blue="0.12636536359786987" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -111,4 +111,5 @@
             <point key="canvasLocation" x="4056" y="521"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.19376453757286072" green="0.50850099325180054" blue="0.85232251882553101" alpha="1" colorSpace="calibratedRGB"/>
 </document>

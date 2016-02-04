@@ -8,15 +8,21 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
+  
+  enum Notifications {
+    static let keyboardWillShow = "UIKeyboardWillShowNotification"
+    static let keyboardWillHide = "UIKeyboardWillHideNotification"
+  }
   
   @IBOutlet weak var imageView: UIImageView!
   @IBOutlet weak var cameraButton: UIBarButtonItem!
   @IBOutlet weak var topTextField: UITextField!
   @IBOutlet weak var bottomTextField: UITextField!
   
-  let topTextFieldDelegate = TopTextFieldDelegate()
-  let bottomTextFieldDelegate = BottomTextFieldDelegate()
+  //optional for currently edited textField
+  var activeField: UITextField?
   
   //meme text attributes
   let memeTextAttributes = [
@@ -29,13 +35,15 @@ class ViewController: UIViewController {
   //MARK: - lifecycle methods
   override func viewDidLoad() {
     super.viewDidLoad()
-  
+    
     setMemeAttributes()
+    self.topTextField.delegate = self
+    self.bottomTextField.delegate = self
   }
   
   override func viewWillAppear(animated: Bool) {
     cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-
+    
     //keyboard notifications
     subscribeToKeyboardWillShowNotification()
     subscribeToKeyboardWillHideNotification()
@@ -59,9 +67,6 @@ class ViewController: UIViewController {
     bottomTextField.defaultTextAttributes = memeTextAttributes
     topTextField.defaultTextAttributes = memeTextAttributes
     
-    //set delegates
-    self.topTextField.delegate = topTextFieldDelegate
-    self.bottomTextField.delegate = bottomTextFieldDelegate
     
     //set placeholder text
     topTextField.text = "TOP"
@@ -72,22 +77,31 @@ class ViewController: UIViewController {
     bottomTextField.textAlignment = .Center
   }
   
-  //MARK: - keyboard notification methods
+  //MARK: - keyboard notifications
   
   func subscribeToKeyboardWillShowNotification() {
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillAppear:", name: UIKeyboardWillShowNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillAppear:", name: Notifications.keyboardWillShow, object: nil)
   }
   
   func subscribeToKeyboardWillHideNotification() {
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: Notifications.keyboardWillHide, object: nil)
+    
   }
   
   func keyboardWillAppear(notification: NSNotification) {
-    self.view.frame.origin.y -= getKeyboardHeight(notification)
+    if let active = activeField {
+      if active == bottomTextField {
+        self.view.frame.origin.y -= getKeyboardHeight(notification)
+      }
+    }
   }
   
   func keyboardWillHide(notification: NSNotification) {
-    self.view.frame.origin.y += getKeyboardHeight(notification)
+    if let active = activeField {
+      if active == bottomTextField {
+        self.view.frame.origin.y += getKeyboardHeight(notification)
+      }
+    }
   }
   
   //get keyboard height
@@ -104,7 +118,7 @@ class ViewController: UIViewController {
   func unsubscribeFromKeyboardWillHideNotification() {
     NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
   }
-
+  
   
   //MARK: - picking an image
   
@@ -138,6 +152,30 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
       self.imageView.image = image
     }
   }
+}
+
+//MARK: - UITextFieldDelegate Extension
+extension ViewController: UITextFieldDelegate {
+  
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    return true
+  }
+  
+  //remove default meme text when edited
+  func textFieldDidBeginEditing(textField: UITextField) {
+    if textField.text == "TOP" {
+      textField.text = ""
+    } else if textField.text == "BOTTOM" {
+      textField.text = ""
+    }
+    activeField = textField
+  }
+  
+  func textFieldDidEndEditing(textField: UITextField) {
+    activeField = nil
+  }
+  
 }
 
 

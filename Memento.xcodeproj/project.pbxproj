@@ -14,8 +14,6 @@
 		018980941C6226E500CC4C03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 018980921C6226E500CC4C03 /* LaunchScreen.storyboard */; };
 		0189809F1C6226E600CC4C03 /* MementoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0189809E1C6226E600CC4C03 /* MementoTests.swift */; };
 		018980AA1C6226E600CC4C03 /* MementoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018980A91C6226E600CC4C03 /* MementoUITests.swift */; };
-		018980B81C623B1600CC4C03 /* TopTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018980B71C623B1600CC4C03 /* TopTextFieldDelegate.swift */; };
-		018980BA1C623B2000CC4C03 /* BottomTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018980B91C623B2000CC4C03 /* BottomTextFieldDelegate.swift */; };
 		018980BC1C62481600CC4C03 /* linkedIn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 018980BB1C62481600CC4C03 /* linkedIn.jpg */; };
 /* End PBXBuildFile section */
 
@@ -50,8 +48,6 @@
 		018980A51C6226E600CC4C03 /* MementoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MementoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		018980A91C6226E600CC4C03 /* MementoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MementoUITests.swift; sourceTree = "<group>"; };
 		018980AB1C6226E600CC4C03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		018980B71C623B1600CC4C03 /* TopTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopTextFieldDelegate.swift; sourceTree = "<group>"; };
-		018980B91C623B2000CC4C03 /* BottomTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomTextFieldDelegate.swift; sourceTree = "<group>"; };
 		018980BB1C62481600CC4C03 /* linkedIn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = linkedIn.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,8 +101,6 @@
 			children = (
 				018980891C6226E500CC4C03 /* AppDelegate.swift */,
 				0189808B1C6226E500CC4C03 /* ViewController.swift */,
-				018980B71C623B1600CC4C03 /* TopTextFieldDelegate.swift */,
-				018980B91C623B2000CC4C03 /* BottomTextFieldDelegate.swift */,
 				0189808D1C6226E500CC4C03 /* Main.storyboard */,
 				018980901C6226E500CC4C03 /* Assets.xcassets */,
 				018980921C6226E500CC4C03 /* LaunchScreen.storyboard */,
@@ -267,8 +261,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				018980B81C623B1600CC4C03 /* TopTextFieldDelegate.swift in Sources */,
-				018980BA1C623B2000CC4C03 /* BottomTextFieldDelegate.swift in Sources */,
 				0189808C1C6226E500CC4C03 /* ViewController.swift in Sources */,
 				0189808A1C6226E500CC4C03 /* AppDelegate.swift in Sources */,
 			);
@@ -499,6 +491,7 @@
 				018980B01C6226E600CC4C03 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		018980B11C6226E600CC4C03 /* Build configuration list for PBXNativeTarget "MementoTests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +500,7 @@
 				018980B31C6226E600CC4C03 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		018980B41C6226E600CC4C03 /* Build configuration list for PBXNativeTarget "MementoUITests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +509,7 @@
 				018980B61C6226E600CC4C03 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
