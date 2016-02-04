@@ -47,6 +47,8 @@ class ViewController: UIViewController {
     
     //share icon
     navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "shareMeme")
+    //cancel icon
+    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: "cancelMeme")
     
   }
   
@@ -195,6 +197,13 @@ class ViewController: UIViewController {
     self.presentViewController(activityVC, animated: true, completion: { _ in
       self.saveMeme()
     })
+  }
+  
+  //MARK: - cancel meme
+  func cancelMeme() {
+    imageView.image = nil
+    topTextField.text = "TOP"
+    bottomTextField.text = "BOTTOM"
   }
 }
 

@@ -77,9 +77,7 @@
                             <constraint firstItem="V4a-kx-HOL" firstAttribute="top" secondItem="DUY-Me-DUB" secondAttribute="bottom" id="zMe-Jc-9M5"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="n3c-NW-kB3">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="cancel" id="SJr-ej-jxx"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="n3c-NW-kB3"/>
                     <connections>
                         <outlet property="bottomTextField" destination="by5-ny-aNw" id="kEZ-Tn-HSc"/>
                         <outlet property="cameraButton" destination="yVn-EO-BIq" id="XSv-xN-8hM"/>
