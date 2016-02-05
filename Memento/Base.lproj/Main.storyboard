@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="490"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="F3b-y3-E5j">
-                                <rect key="frame" x="0.0" y="114" width="600" height="40"/>
+                                <rect key="frame" x="0.0" y="89" width="600" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="xIR-rk-hsG"/>
                                 </constraints>
@@ -30,7 +30,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="by5-ny-aNw">
-                                <rect key="frame" x="0.0" y="464" width="600" height="40"/>
+                                <rect key="frame" x="0.0" y="489" width="600" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="kv0-PV-ZBE"/>
                                 </constraints>
@@ -67,12 +67,12 @@
                             <constraint firstItem="F3b-y3-E5j" firstAttribute="trailing" secondItem="DUY-Me-DUB" secondAttribute="trailing" id="GGa-MI-AQp"/>
                             <constraint firstItem="by5-ny-aNw" firstAttribute="trailing" secondItem="V4a-kx-HOL" secondAttribute="trailing" id="Mqr-Iq-SUK"/>
                             <constraint firstItem="V4a-kx-HOL" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="NT1-op-WI1"/>
-                            <constraint firstItem="V4a-kx-HOL" firstAttribute="top" secondItem="by5-ny-aNw" secondAttribute="bottom" constant="50" id="Qsb-8y-rA3"/>
+                            <constraint firstItem="V4a-kx-HOL" firstAttribute="top" secondItem="by5-ny-aNw" secondAttribute="bottom" constant="25" id="Qsb-8y-rA3"/>
                             <constraint firstItem="by5-ny-aNw" firstAttribute="leading" secondItem="V4a-kx-HOL" secondAttribute="leading" id="SOD-6i-6Il"/>
                             <constraint firstItem="DUY-Me-DUB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Sqi-mP-uqe"/>
                             <constraint firstItem="V4a-kx-HOL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eND-aD-4LS"/>
                             <constraint firstItem="DUY-Me-DUB" firstAttribute="leading" secondItem="by5-ny-aNw" secondAttribute="leading" id="jdY-6b-3Ud"/>
-                            <constraint firstItem="F3b-y3-E5j" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="vbg-Xz-zg5"/>
+                            <constraint firstItem="F3b-y3-E5j" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="25" id="vbg-Xz-zg5"/>
                             <constraint firstAttribute="trailing" secondItem="DUY-Me-DUB" secondAttribute="trailing" id="vxP-SJ-ZAr"/>
                             <constraint firstItem="V4a-kx-HOL" firstAttribute="top" secondItem="DUY-Me-DUB" secondAttribute="bottom" id="zMe-Jc-9M5"/>
                         </constraints>
