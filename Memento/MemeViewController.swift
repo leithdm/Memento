@@ -27,6 +27,7 @@ class MemeViewController: UIViewController {
 	var activeField: UITextField?
 	var memedImage: UIImage?
 	var keyboardUp: Bool = false
+	typealias UIActivityViewControllerCompletionWithItemsHandler = (String!, Bool, [AnyObject]!, NSError!) -> Void
 	
 	//meme text attributes
 	let memeTextAttributes = [
@@ -217,10 +218,15 @@ class MemeViewController: UIViewController {
 		generateMeme()
 		
 		let activityVC = UIActivityViewController(activityItems: [memedImage!], applicationActivities: .None)
-		presentViewController(activityVC, animated: true, completion: { _ in
+		presentViewController(activityVC, animated: true, completion: nil)
+		
+		activityVC.completionWithItemsHandler = { activityVC, success, items, error in
+			if !success {
+				return
+			}
+			//save the meme
 			self.saveMeme()
-		})
-		activityVC.completionWithItemsHandler = { _ in
+			//navigate to the TabBarController
 			let tabBarController = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
 			UIApplication.sharedApplication().windows.first?.rootViewController = tabBarController
 		}
