@@ -15,7 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var memes = [Meme]()
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    // Override point for customization after application launch.
+	let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+	
+	if memes.isEmpty {
+		let MemeVC = storyboard.instantiateViewControllerWithIdentifier("MemeNavigationController") as! UINavigationController
+		window?.rootViewController = MemeVC
+	}
     return true
   }
 

@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ViewController: UIViewController {
+class MemeViewController: UIViewController {
 	
 	enum Notifications {
 		static let keyboardWillShow = "UIKeyboardWillShowNotification"
@@ -220,6 +220,10 @@ class ViewController: UIViewController {
 		presentViewController(activityVC, animated: true, completion: { _ in
 			self.saveMeme()
 		})
+		activityVC.completionWithItemsHandler = { _ in
+			let tabBarController = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
+			UIApplication.sharedApplication().windows.first?.rootViewController = tabBarController
+		}
 	}
 	
 	
@@ -234,7 +238,7 @@ class ViewController: UIViewController {
 
 //MARK: - UIImagePickerControllerDelegate Extension
 
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension MemeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 	
 	func imagePickerControllerDidCancel(picker: UIImagePickerController) {
 		dismissViewControllerAnimated(true, completion: nil)
@@ -260,7 +264,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 
 //MARK: - UITextFieldDelegate Extension
 
-extension ViewController: UITextFieldDelegate {
+extension MemeViewController: UITextFieldDelegate {
 	func textFieldShouldReturn(textField: UITextField) -> Bool {
 		textField.resignFirstResponder()
 		return true
