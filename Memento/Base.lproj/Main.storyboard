@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Meme View Controller-->
@@ -97,7 +98,7 @@
             </objects>
             <point key="canvasLocation" x="4741" y="555"/>
         </scene>
-        <!--Meme Table View Controller-->
+        <!--Sent Memes-->
         <scene sceneID="zSK-zY-uU2">
             <objects>
                 <tableViewController storyboardIdentifier="MemeTableViewController" id="x3r-KQ-jyH" customClass="MemeTableViewController" customModule="Memento" customModuleProvider="target" sceneMemberID="viewController">
@@ -110,19 +111,31 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="144"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UwT-h1-ZTG" id="Rfi-49-lkH">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="143.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="144"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JLS-PF-SFu">
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JLS-PF-SFu">
                                             <rect key="frame" x="8" y="12" width="120" height="120"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="120" id="4y5-ee-0M3"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJd-DB-pb1">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJd-DB-pb1">
                                             <rect key="frame" x="136" y="12" width="456" height="120"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="JLS-PF-SFu" firstAttribute="top" secondItem="lJd-DB-pb1" secondAttribute="top" id="9HU-0x-jTp"/>
+                                        <constraint firstItem="lJd-DB-pb1" firstAttribute="top" secondItem="Rfi-49-lkH" secondAttribute="topMargin" constant="4" id="PLj-8J-nhS"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="lJd-DB-pb1" secondAttribute="bottom" constant="3.5" id="Sba-Kr-FAX"/>
+                                        <constraint firstItem="JLS-PF-SFu" firstAttribute="bottom" secondItem="lJd-DB-pb1" secondAttribute="bottom" id="V9z-IO-yqM"/>
+                                        <constraint firstItem="JLS-PF-SFu" firstAttribute="leading" secondItem="Rfi-49-lkH" secondAttribute="leadingMargin" id="skA-Fr-Qba"/>
+                                        <constraint firstItem="lJd-DB-pb1" firstAttribute="leading" secondItem="JLS-PF-SFu" secondAttribute="trailing" constant="8" symbolic="YES" id="z91-VJ-8jl"/>
+                                        <constraint firstItem="lJd-DB-pb1" firstAttribute="trailing" secondItem="Rfi-49-lkH" secondAttribute="trailingMargin" id="zMh-R7-rcS"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -131,7 +144,7 @@
                             <outlet property="delegate" destination="x3r-KQ-jyH" id="Cc9-2P-49U"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="pkI-nl-BAb"/>
+                    <navigationItem key="navigationItem" title="Sent Memes" id="pkI-nl-BAb"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pbo-QM-J3P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -141,24 +154,48 @@
         <scene sceneID="ya2-fD-KlY">
             <objects>
                 <collectionViewController id="r9V-Fs-evs" customClass="MemeCollectionViewController" customModule="Memento" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ih1-U0-Xzj">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" dataMode="prototypes" id="ih1-U0-Xzj">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="T0W-nm-0o6">
-                            <size key="itemSize" width="156" height="144"/>
+                            <size key="itemSize" width="120" height="120"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="2" minY="2" maxX="2" maxY="2"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="FAW-4f-gFl">
-                                <rect key="frame" x="0.0" y="64" width="156" height="144"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" reuseIdentifier="MemeCollectionViewCell" id="FAW-4f-gFl" customClass="MemeCollectionViewCell" customModule="Memento" customModuleProvider="target">
+                                <rect key="frame" x="2" y="66" width="120" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="156" height="144"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="41F-o5-04c">
+                                            <rect key="frame" x="0.0" y="0.0" width="118" height="118"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMk-Z6-MTJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="118" height="40"/>
+                                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="18"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="283-J8-f1T">
+                                            <rect key="frame" x="0.0" y="85" width="118" height="35"/>
+                                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="18"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="memeBottomText" destination="283-J8-f1T" id="vem-lP-mLj"/>
+                                    <outlet property="memeImage" destination="41F-o5-04c" id="km1-S9-bRa"/>
+                                    <outlet property="memeTopText" destination="dMk-Z6-MTJ" id="dkv-Ae-7Cs"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>

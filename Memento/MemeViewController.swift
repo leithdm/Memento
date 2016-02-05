@@ -232,7 +232,6 @@ class MemeViewController: UIViewController {
 		}
 	}
 	
-	
 	//MARK: - cancel meme
 	func cancelMeme() {
 		imageView.image = nil
