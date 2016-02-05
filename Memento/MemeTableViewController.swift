@@ -31,8 +31,8 @@ class MemeTableViewController: UITableViewController {
     }
 	
 	func createMeme() {
-			let memeVC = self.storyboard!.instantiateViewControllerWithIdentifier("MemeNavigationController") as! UINavigationController
-			UIApplication.sharedApplication().windows.first?.rootViewController = memeVC
+		let memeNavController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeNavigationController") as! UINavigationController
+		presentViewController(memeNavController, animated: true, completion: nil)
 	}
 
     // MARK: - Table view data source

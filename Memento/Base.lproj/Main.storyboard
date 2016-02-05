@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Meme View Controller-->
+        <!--Meme Editor-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="MemeViewController" id="BYZ-38-t0r" customClass="MemeViewController" customModule="Memento" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DUY-Me-DUB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DUY-Me-DUB">
                                 <rect key="frame" x="0.0" y="64" width="600" height="490"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="F3b-y3-E5j">
@@ -30,7 +30,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="by5-ny-aNw">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="by5-ny-aNw">
                                 <rect key="frame" x="0.0" y="489" width="600" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="kv0-PV-ZBE"/>
@@ -39,7 +39,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V4a-kx-HOL">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V4a-kx-HOL">
                                 <rect key="frame" x="0.0" y="554" width="600" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="DO2-DH-W5I"/>
@@ -78,7 +78,7 @@
                             <constraint firstItem="V4a-kx-HOL" firstAttribute="top" secondItem="DUY-Me-DUB" secondAttribute="bottom" id="zMe-Jc-9M5"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="n3c-NW-kB3">
+                    <navigationItem key="navigationItem" title="Meme Editor" id="n3c-NW-kB3">
                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="8O4-Cf-1bJ">
                             <connections>
                                 <action selector="shareMeme:" destination="BYZ-38-t0r" id="PK9-UT-vcG"/>
@@ -96,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4741" y="555"/>
+            <point key="canvasLocation" x="4455" y="1213"/>
         </scene>
         <!--Sent Memes-->
         <scene sceneID="zSK-zY-uU2">
@@ -111,7 +111,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="144"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UwT-h1-ZTG" id="Rfi-49-lkH">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="144"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="143.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JLS-PF-SFu">
@@ -123,7 +123,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJd-DB-pb1">
                                             <rect key="frame" x="136" y="12" width="456" height="120"/>
                                             <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -144,13 +144,15 @@
                             <outlet property="delegate" destination="x3r-KQ-jyH" id="Cc9-2P-49U"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Sent Memes" id="pkI-nl-BAb"/>
+                    <navigationItem key="navigationItem" title="Sent Memes" id="pkI-nl-BAb">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="f0I-0h-h20"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pbo-QM-J3P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5427" y="1344"/>
+            <point key="canvasLocation" x="4461" y="446"/>
         </scene>
-        <!--Meme Collection View Controller-->
+        <!--Meme Detail-->
         <scene sceneID="ya2-fD-KlY">
             <objects>
                 <collectionViewController id="r9V-Fs-evs" customClass="MemeCollectionViewController" customModule="Memento" customModuleProvider="target" sceneMemberID="viewController">
@@ -203,11 +205,14 @@
                             <outlet property="delegate" destination="r9V-Fs-evs" id="YeK-Co-H7z"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="q40-2r-yCC"/>
+                    <navigationItem key="navigationItem" title="Meme Detail" id="q40-2r-yCC"/>
+                    <connections>
+                        <outlet property="flowLayout" destination="T0W-nm-0o6" id="EhS-8U-p7N"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yf8-c0-oFX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6845" y="1344"/>
+            <point key="canvasLocation" x="5879" y="446"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Te9-xl-E4i">
@@ -225,7 +230,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Kb-Jz-3dd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4015" y="555"/>
+            <point key="canvasLocation" x="3775" y="1213"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="SMI-HR-2yb">
@@ -243,7 +248,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bl3-vC-QWn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5557" y="555"/>
+            <point key="canvasLocation" x="4461" y="-329"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="k5D-79-QmM">
@@ -262,7 +267,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WTI-4M-hCJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4741" y="1344"/>
+            <point key="canvasLocation" x="3775" y="446"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Csx-r1-Uya">
@@ -281,7 +286,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0T3-ER-hij" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6173" y="1344"/>
+            <point key="canvasLocation" x="5207" y="446"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.15410047769546509" green="0.41306763887405396" blue="0.69063264131546021" alpha="1" colorSpace="calibratedRGB"/>

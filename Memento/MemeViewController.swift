@@ -234,10 +234,7 @@ class MemeViewController: UIViewController {
 	
 	//MARK: - cancel meme
 	func cancelMeme() {
-		imageView.image = nil
-		setPlaceholderText()
-		shareIcon.enabled = false
-		setBackgroundColor()
+		dismissViewControllerAnimated(true, completion: nil)
 	}
 }
 
