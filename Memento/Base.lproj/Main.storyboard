@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RMp-Id-y9j">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RMp-Id-y9j">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -18,28 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DUY-Me-DUB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DUY-Me-DUB">
                                 <rect key="frame" x="0.0" y="64" width="600" height="490"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="F3b-y3-E5j">
-                                <rect key="frame" x="0.0" y="89" width="600" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="xIR-rk-hsG"/>
-                                </constraints>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="by5-ny-aNw">
-                                <rect key="frame" x="0.0" y="489" width="600" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="kv0-PV-ZBE"/>
-                                </constraints>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
-                            </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V4a-kx-HOL">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V4a-kx-HOL">
                                 <rect key="frame" x="0.0" y="554" width="600" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="DO2-DH-W5I"/>
@@ -60,6 +42,24 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ucc-8Q-JnY"/>
                                 </items>
                             </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="by5-ny-aNw">
+                                <rect key="frame" x="0.0" y="489" width="600" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="kv0-PV-ZBE"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="F3b-y3-E5j">
+                                <rect key="frame" x="0.0" y="89" width="600" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="xIR-rk-hsG"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.66902792453765869" green="0.73128575086593628" blue="0.94889926910400391" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -84,10 +84,16 @@
                                 <action selector="shareMeme:" destination="BYZ-38-t0r" id="PK9-UT-vcG"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Blv-df-4yn">
+                            <connections>
+                                <action selector="cancelMeme:" destination="BYZ-38-t0r" id="vba-gr-wH3"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bottomTextField" destination="by5-ny-aNw" id="kEZ-Tn-HSc"/>
                         <outlet property="cameraButton" destination="8Iv-Yp-NAk" id="Ptc-Ui-dl0"/>
+                        <outlet property="cancelButton" destination="Blv-df-4yn" id="rL8-xq-krk"/>
                         <outlet property="imageView" destination="DUY-Me-DUB" id="FNg-MV-0bQ"/>
                         <outlet property="shareIcon" destination="8O4-Cf-1bJ" id="OyW-EB-F6N"/>
                         <outlet property="toolBar" destination="V4a-kx-HOL" id="Ahw-VT-7cD"/>
@@ -97,6 +103,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4455" y="1213"/>
+        </scene>
+        <!--Detail Meme View Controller-->
+        <scene sceneID="KNQ-Ub-vo4">
+            <objects>
+                <viewController storyboardIdentifier="DetailMemeViewController" id="JxI-7Q-fMC" customClass="DetailMemeViewController" customModule="Memento" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jnb-UZ-GPo"/>
+                        <viewControllerLayoutGuide type="bottom" id="KmA-xQ-M15"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="F9K-M6-A36">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OPs-Ya-GFU">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="OPs-Ya-GFU" secondAttribute="trailing" id="2PC-h7-Gkg"/>
+                            <constraint firstItem="KmA-xQ-M15" firstAttribute="top" secondItem="OPs-Ya-GFU" secondAttribute="bottom" id="Ivc-wk-8Zg"/>
+                            <constraint firstItem="OPs-Ya-GFU" firstAttribute="leading" secondItem="F9K-M6-A36" secondAttribute="leading" id="W93-EG-KyX"/>
+                            <constraint firstItem="OPs-Ya-GFU" firstAttribute="top" secondItem="jnb-UZ-GPo" secondAttribute="bottom" constant="-20" id="eWO-9f-npJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="X5a-Fg-NZc"/>
+                    <connections>
+                        <outlet property="memeImage" destination="OPs-Ya-GFU" id="VIO-zp-WeQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DLk-wq-nmV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5207" y="1213"/>
         </scene>
         <!--Sent Memes-->
         <scene sceneID="zSK-zY-uU2">

@@ -19,11 +19,17 @@ class MemeTableViewController: UITableViewController {
 		memes = applicationDelegate.memes
 		
 		//edit button
-		self.navigationItem.leftBarButtonItem = self.editButtonItem()
+		navigationItem.leftBarButtonItem = editButtonItem()
 		
 		//add button
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "createMeme")
     }
+
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    tableView.reloadData()
+    print("Will appear: \(memes)")
+  }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -44,6 +50,12 @@ class MemeTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
+	
+	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		let detailMemeView = storyboard!.instantiateViewControllerWithIdentifier("DetailMemeViewController") as! DetailMemeViewController
+		detailMemeView.meme = memes[indexPath.row]
+		navigationController?.pushViewController(detailMemeView, animated: true)
+	}
 
 	
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -68,11 +80,11 @@ class MemeTableViewController: UITableViewController {
 	
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
             // Delete the row from the data source
+            memes.removeAtIndex(indexPath.row)
+            print(memes)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-			memes.removeAtIndex(indexPath.row)
-        }
+
     }
 
 }

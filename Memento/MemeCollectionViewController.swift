@@ -14,11 +14,12 @@ class MemeCollectionViewController: UICollectionViewController  {
 	
 	@IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
 	var memes: [Meme]!
-	
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+
+    collectionView!.reloadData()
+
 		//shared Meme data model
 		let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
 		memes = applicationDelegate.memes
@@ -33,6 +34,11 @@ class MemeCollectionViewController: UICollectionViewController  {
 		//add button
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "createMeme")
 	}
+
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    collectionView!.reloadData()
+  }
 	
 	// MARK: UICollectionViewDataSource
 	

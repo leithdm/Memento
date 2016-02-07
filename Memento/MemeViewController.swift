@@ -10,32 +10,67 @@ import UIKit
 
 
 class MemeViewController: UIViewController {
-	
+
+  
 	enum Notifications {
 		static let keyboardWillShow = "UIKeyboardWillShowNotification"
 		static let keyboardWillHide = "UIKeyboardWillHideNotification"
 	}
 	
 	//MARK: - properties
-	@IBOutlet weak var imageView: UIImageView!
+	@IBOutlet weak var imageView: UIImageView! 
 	@IBOutlet weak var cameraButton: UIBarButtonItem!
 	@IBOutlet weak var topTextField: UITextField!
 	@IBOutlet weak var bottomTextField: UITextField!
 	@IBOutlet weak var toolBar: UIToolbar!
 	@IBOutlet weak var shareIcon: UIBarButtonItem!
+	@IBOutlet weak var cancelButton: UIBarButtonItem!
 	
 	var activeField: UITextField?
 	var memedImage: UIImage?
 	var keyboardUp: Bool = false
 	typealias UIActivityViewControllerCompletionWithItemsHandler = (String!, Bool, [AnyObject]!, NSError!) -> Void
 	
-	//meme text attributes
+//meme text attributes
 	let memeTextAttributes = [
 		NSStrokeColorAttributeName: UIColor.blackColor(), //outline color
 		NSForegroundColorAttributeName: UIColor.whiteColor(), //color of text during rendering
 		NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
 		NSStrokeWidthAttributeName: -3.0
 	]
+	
+	//did set method for topTextField required when editing meme. This ensures default "TOP"/"BOTTOM" text is replaced by actual text of the memem
+	var topTextFieldString: String? {
+		didSet {
+			configureTopTextField()
+		}
+	}
+	
+	//did set method for bottomTextField required when editing meme. This ensures default "TOP"/"BOTTOM" text is replaced by actual text of the memem
+
+	var bottomTextFieldString: String? {
+		didSet {
+			configureBottomTextField()
+		}
+	}
+	
+	//configure topTextField
+	func configureTopTextField() {
+		if let topText = topTextFieldString {
+			if let topTField = topTextField {
+				topTField.text = topText
+			}
+		}
+	}
+	
+	//configure bottomTextField
+	func configureBottomTextField() {
+		if let bottomText = bottomTextFieldString {
+			if let bottomTField = bottomTextField {
+				bottomTField.text = bottomText
+			}
+		}
+	}
 	
 	
 	//MARK: - lifecycle methods
@@ -48,11 +83,12 @@ class MemeViewController: UIViewController {
 		topTextField.delegate = self
 		bottomTextField.delegate = self
 		
-		//cancel icon
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: "cancelMeme")
-		
+
 		//shareButton icon disabled
 		shareIcon.enabled = false
+		
+		configureTopTextField()
+		configureBottomTextField()
 	}
 	
 	override func viewWillAppear(animated: Bool) {
@@ -64,6 +100,7 @@ class MemeViewController: UIViewController {
 		
 		setBackgroundColor()
 		loadAnimations()
+
 	}
 	
 	override func viewWillDisappear(animated: Bool) {
@@ -232,10 +269,12 @@ class MemeViewController: UIViewController {
 		}
 	}
 	
-	//MARK: - cancel meme
-	func cancelMeme() {
+	
+	@IBAction func cancelMeme(sender: AnyObject) {
 		dismissViewControllerAnimated(true, completion: nil)
 	}
+	
+
 }
 
 //MARK: - UIImagePickerControllerDelegate Extension
