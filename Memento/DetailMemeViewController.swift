@@ -27,6 +27,7 @@ class DetailMemeViewController: UIViewController {
 		}
 	}
 	
+	
 	//MARK: - editMeme()
 	//this will set the detail meme properties on the MemeViewController, and navigate.
 	func editMeme() {
