@@ -10,15 +10,14 @@ import UIKit
 
 
 class MemeViewController: UIViewController {
-
-  
+	
 	enum Notifications {
 		static let keyboardWillShow = "UIKeyboardWillShowNotification"
 		static let keyboardWillHide = "UIKeyboardWillHideNotification"
 	}
 	
 	//MARK: - properties
-	@IBOutlet weak var imageView: UIImageView! 
+	@IBOutlet weak var imageView: UIImageView!
 	@IBOutlet weak var cameraButton: UIBarButtonItem!
 	@IBOutlet weak var topTextField: UITextField!
 	@IBOutlet weak var bottomTextField: UITextField!
@@ -31,7 +30,7 @@ class MemeViewController: UIViewController {
 	var keyboardUp: Bool = false
 	typealias UIActivityViewControllerCompletionWithItemsHandler = (String!, Bool, [AnyObject]!, NSError!) -> Void
 	
-//meme text attributes
+	//meme text attributes
 	let memeTextAttributes = [
 		NSStrokeColorAttributeName: UIColor.blackColor(), //outline color
 		NSForegroundColorAttributeName: UIColor.whiteColor(), //color of text during rendering
@@ -39,15 +38,15 @@ class MemeViewController: UIViewController {
 		NSStrokeWidthAttributeName: -3.0
 	]
 	
-	//did set method for topTextField required when editing meme. This ensures default "TOP"/"BOTTOM" text is replaced by actual text of the memem
+	//did set method for topTextField required when editing meme.
+	//This ensures default "TOP"/"BOTTOM" text is replaced by actual text of the memem
 	var topTextFieldString: String? {
 		didSet {
 			configureTopTextField()
 		}
 	}
 	
-	//did set method for bottomTextField required when editing meme. This ensures default "TOP"/"BOTTOM" text is replaced by actual text of the memem
-
+	//did set method for bottomTextField required when editing meme.
 	var bottomTextFieldString: String? {
 		didSet {
 			configureBottomTextField()
@@ -83,7 +82,7 @@ class MemeViewController: UIViewController {
 		topTextField.delegate = self
 		bottomTextField.delegate = self
 		
-
+		
 		//shareButton icon disabled
 		shareIcon.enabled = false
 		
@@ -100,7 +99,7 @@ class MemeViewController: UIViewController {
 		
 		setBackgroundColor()
 		loadAnimations()
-
+		
 	}
 	
 	override func viewWillDisappear(animated: Bool) {
@@ -110,6 +109,7 @@ class MemeViewController: UIViewController {
 	}
 	
 	//MARK: - loadAnimations
+	
 	func loadAnimations() {
 		//Moving elements off-screen prior to being shown
 		topTextField.center.x += view.bounds.width
@@ -122,6 +122,7 @@ class MemeViewController: UIViewController {
 	}
 	
 	//MARK: - setMemeAttributes
+	
 	func setMemeAttributes() {
 		
 		//set meme default text attributes
@@ -274,7 +275,7 @@ class MemeViewController: UIViewController {
 		dismissViewControllerAnimated(true, completion: nil)
 	}
 	
-
+	
 }
 
 //MARK: - UIImagePickerControllerDelegate Extension
@@ -324,7 +325,4 @@ extension MemeViewController: UITextFieldDelegate {
 	func textFieldDidEndEditing(textField: UITextField) {
 		activeField = nil
 	}
-	
 }
-
-

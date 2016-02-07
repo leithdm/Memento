@@ -9,11 +9,11 @@
 import UIKit
 
 class MemeTableViewController: UITableViewController {
-
+	
 	var memes: [Meme]!
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		
 		let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
 		memes = applicationDelegate.memes
@@ -23,68 +23,59 @@ class MemeTableViewController: UITableViewController {
 		
 		//add button
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "createMeme")
-    }
-
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
-    tableView.reloadData()
-    print("Will appear: \(memes)")
-  }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+	}
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		tableView.reloadData()
+	}
 	
 	func createMeme() {
 		let memeNavController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeNavigationController") as! UINavigationController
 		presentViewController(memeNavController, animated: true, completion: nil)
 	}
-
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return memes.count
-    }
+	
+	// MARK: - Table view methods
+	
+	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+		return 1
+	}
+	
+	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return memes.count
+	}
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		let detailMemeView = storyboard!.instantiateViewControllerWithIdentifier("DetailMemeViewController") as! DetailMemeViewController
 		detailMemeView.meme = memes[indexPath.row]
 		navigationController?.pushViewController(detailMemeView, animated: true)
 	}
-
 	
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-
+	
+	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+		
 		let meme = memes[indexPath.row]
 		let memeImage = cell.viewWithTag(1) as! UIImageView
 		let memeLabel = cell.viewWithTag(2) as! UILabel
 		
 		memeImage.image = meme.originalImage
 		memeLabel.text = "\(meme.topText)...\(meme.bottomText)"
-        return cell
-    }
-
-
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-
+		return cell
+	}
 	
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-            // Delete the row from the data source
-            memes.removeAtIndex(indexPath.row)
-            print(memes)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-
-    }
-
+	
+	// Override to support conditional editing of the table view.
+	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+		return true
+	}
+	
+	// Override to support editing the table view.
+	override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+		// Delete the row from the data source.
+		memes.removeAtIndex(indexPath.row)
+		(UIApplication.sharedApplication().delegate as! AppDelegate).memes.removeAtIndex(indexPath.row)
+		tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+	}
+	
 }

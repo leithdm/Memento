@@ -21,10 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let memeNavController = storyboard.instantiateViewControllerWithIdentifier("MemeNavigationController") as! UINavigationController
 		let memeVC = memeNavController.viewControllers[0] as! MemeViewController
 		memeVC.cancelButton.enabled = false 
-		
 		window?.rootViewController = memeNavController
-
-    print("app delegate: \(memes)")  
 	}
     return true
   }

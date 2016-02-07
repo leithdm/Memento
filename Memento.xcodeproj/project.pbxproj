@@ -177,9 +177,9 @@
 			children = (
 				0189808B1C6226E500CC4C03 /* MemeViewController.swift */,
 				01B510B21C64C09E00469BC1 /* MemeTableViewController.swift */,
-				01A963E41C650A7E00F175EE /* DetailMemeViewController.swift */,
 				01B510B01C64C03C00469BC1 /* MemeCollectionViewController.swift */,
 				018DB5131C64E31400ED9100 /* MemeCollectionViewCell.swift */,
+				01A963E41C650A7E00F175EE /* DetailMemeViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

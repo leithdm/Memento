@@ -14,15 +14,10 @@ class MemeCollectionViewController: UICollectionViewController  {
 	
 	@IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
 	var memes: [Meme]!
-
+	
+	//MARK: - Lifecycle methods
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
-    collectionView!.reloadData()
-
-		//shared Meme data model
-		let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-		memes = applicationDelegate.memes
 		
 		//flowLayout
 		let space: CGFloat = 3.0
@@ -34,13 +29,26 @@ class MemeCollectionViewController: UICollectionViewController  {
 		//add button
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "createMeme")
 	}
-
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
-    collectionView!.reloadData()
-  }
 	
-	// MARK: UICollectionViewDataSource
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		collectionView!.reloadData()
+		
+		//shared Meme data model
+		let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+		memes = applicationDelegate.memes
+		
+
+	}
+	
+	//MARK: - create a new meme
+	func createMeme() {
+		let memeNavController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeNavigationController") as! UINavigationController
+		presentViewController(memeNavController, animated: true, completion: nil)
+	}
+	
+	// MARK: UICollectionViewDataSource / Delegate
 	
 	override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
 		return 1
@@ -48,6 +56,12 @@ class MemeCollectionViewController: UICollectionViewController  {
 	
 	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return memes.count
+	}
+	
+	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+		let detailMemeView = storyboard!.instantiateViewControllerWithIdentifier("DetailMemeViewController") as! DetailMemeViewController
+		detailMemeView.meme = memes[indexPath.row]
+		navigationController?.pushViewController(detailMemeView, animated: true)
 	}
 	
 	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -60,10 +74,5 @@ class MemeCollectionViewController: UICollectionViewController  {
 		cell.memeBottomText!.text = meme.bottomText
 		
 		return cell
-	}
-	
-	func createMeme() {
-		let memeNavController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeNavigationController") as! UINavigationController
-		presentViewController(memeNavController, animated: true, completion: nil)
 	}
 }
