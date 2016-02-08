@@ -88,6 +88,7 @@ class MemeViewController: UIViewController {
 		
 		configureTopTextField()
 		configureBottomTextField()
+		
 	}
 	
 	override func viewWillAppear(animated: Bool) {
@@ -106,6 +107,10 @@ class MemeViewController: UIViewController {
 		super.viewWillDisappear(animated)
 		unsubscribeFromKeyboardWillShowNotification()
 		unsubscribeFromKeyboardWillHideNotification()
+	}
+	
+	override func prefersStatusBarHidden() -> Bool {
+		return true
 	}
 	
 	//MARK: - loadAnimations

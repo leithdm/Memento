@@ -28,6 +28,10 @@ class MemeTableViewController: UITableViewController {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		tableView.reloadData()
+		
+		if (UIApplication.sharedApplication().delegate as! AppDelegate).memes.isEmpty {
+			editButtonItem().enabled = false
+		}
 	}
 	
 	func createMeme() {
