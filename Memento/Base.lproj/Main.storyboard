@@ -117,13 +117,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OPs-Ya-GFU">
-                                <rect key="frame" x="0.0" y="70" width="600" height="480"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="OPs-Ya-GFU" firstAttribute="top" secondItem="F9K-M6-A36" secondAttribute="top" constant="70" id="JJ2-Gf-AVC"/>
-                            <constraint firstItem="OPs-Ya-GFU" firstAttribute="bottom" secondItem="KmA-xQ-M15" secondAttribute="top" constant="-50" id="inc-k8-ydq"/>
+                            <constraint firstItem="OPs-Ya-GFU" firstAttribute="top" secondItem="F9K-M6-A36" secondAttribute="top" id="JJ2-Gf-AVC"/>
+                            <constraint firstItem="OPs-Ya-GFU" firstAttribute="bottom" secondItem="KmA-xQ-M15" secondAttribute="top" id="inc-k8-ydq"/>
                             <constraint firstItem="OPs-Ya-GFU" firstAttribute="leading" secondItem="F9K-M6-A36" secondAttribute="leading" id="lVH-x0-H4J"/>
                             <constraint firstAttribute="trailing" secondItem="OPs-Ya-GFU" secondAttribute="trailing" id="ovZ-Nz-WBi"/>
                         </constraints>
