@@ -28,10 +28,7 @@ class MemeTableViewController: UITableViewController {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		tableView.reloadData()
-		
-		if (UIApplication.sharedApplication().delegate as! AppDelegate).memes.isEmpty {
-			editButtonItem().enabled = false
-		}
+
 	}
 	
 	func createMeme() {
@@ -79,6 +76,9 @@ class MemeTableViewController: UITableViewController {
 		// Delete the row from the data source.
 		memes.removeAtIndex(indexPath.row)
 		(UIApplication.sharedApplication().delegate as! AppDelegate).memes.removeAtIndex(indexPath.row)
+		if (UIApplication.sharedApplication().delegate as! AppDelegate).memes.isEmpty {
+			editButtonItem().enabled = false
+		}
 		tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
 	}
 	
