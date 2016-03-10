@@ -6,5 +6,8 @@
 - share that meme on Facebook, Twitter, SMS, email, etc.
 - sent memes appear in a tab view with two tabs: table view, and a collection view.
 
+##Features
+- CoreData persistence
+
 
 [![Memento](https://j.gifs.com/yPXyWP.gif)](https://youtu.be/i34MZl-wWJU)
