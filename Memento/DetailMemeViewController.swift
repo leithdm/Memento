@@ -23,7 +23,7 @@ class DetailMemeViewController: UIViewController {
 	
 	override func viewWillAppear(animated: Bool) {
 		if let meme = meme {
-			memeImage.image = meme.memedImage
+			memeImage.image = UIImage(data: meme.memedImage)
 		}
 	}
 	
@@ -41,7 +41,7 @@ class DetailMemeViewController: UIViewController {
 			memeVC.bottomTextFieldString = meme.bottomText
 			
 			presentViewController(memeNavController, animated: true, completion: { _ in
-				memeVC.imageView.image = meme.originalImage
+				memeVC.imageView.image = UIImage(data: meme.originalImage)
 				memeVC.shareIcon.enabled = true
 			})
 		}

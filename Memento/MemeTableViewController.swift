@@ -7,28 +7,48 @@
 //
 
 import UIKit
+import CoreData
 
 class MemeTableViewController: UITableViewController {
 	
 	var memes: [Meme]!
 	
+	lazy var sharedContext: NSManagedObjectContext = {
+		return CoreDataStackManager.sharedInstance().managedObjectContext
+	}()
+	
+	//MARK: - lifecycle methods
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-		memes = applicationDelegate.memes
-		
+
 		//edit button
 		navigationItem.leftBarButtonItem = editButtonItem()
 		
 		//add button
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "createMeme")
+		
 	}
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
+		
+		//fetch memes from database
+		memes = fetchMemes()
 		tableView.reloadData()
 
+	}
+	
+	//MARK: - fetch memes from database
+	
+	func fetchMemes() -> [Meme] {
+		let fetchRequest = NSFetchRequest(entityName: "Meme")
+		
+		do {
+			return try sharedContext.executeFetchRequest(fetchRequest) as! [Meme]
+		} catch {
+			return [Meme]()
+		}
 	}
 	
 	func createMeme() {
@@ -60,7 +80,7 @@ class MemeTableViewController: UITableViewController {
 		let memeImage = cell.viewWithTag(1) as! UIImageView
 		let memeLabel = cell.viewWithTag(2) as! UILabel
 		
-		memeImage.image = meme.originalImage
+		memeImage.image = UIImage(data: meme.originalImage)
 		memeLabel.text = "\(meme.topText)...\(meme.bottomText)"
 		return cell
 	}
@@ -74,12 +94,17 @@ class MemeTableViewController: UITableViewController {
 	// Override to support editing the table view.
 	override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
 		// Delete the row from the data source.
+		
+		let memeToDelete = memes[indexPath.row]
+		
 		memes.removeAtIndex(indexPath.row)
-		(UIApplication.sharedApplication().delegate as! AppDelegate).memes.removeAtIndex(indexPath.row)
-		if (UIApplication.sharedApplication().delegate as! AppDelegate).memes.isEmpty {
+
+		if (memes.isEmpty) {
 			editButtonItem().enabled = false
 		}
 		tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+		sharedContext.deleteObject(memeToDelete)
+		CoreDataStackManager.sharedInstance().saveContext()
 	}
 	
 }

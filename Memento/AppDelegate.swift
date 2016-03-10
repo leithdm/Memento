@@ -7,15 +7,33 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
-  var memes = [Meme]()
+  var memes: [Meme]!
+  lazy var sharedContext: NSManagedObjectContext = {
+	return CoreDataStackManager.sharedInstance().managedObjectContext
+}()
+	
+	//MARK: - fetch memes from database
+	
+	func fetchMemes() -> [Meme] {
+		let fetchRequest = NSFetchRequest(entityName: "Meme")
+		
+		do {
+			return try sharedContext.executeFetchRequest(fetchRequest) as! [Meme]
+		} catch {
+			return [Meme]()
+		}
+	}
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 	let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+	
+	memes = fetchMemes()
 	
 	if memes.isEmpty {
 		let memeNavController = storyboard.instantiateViewControllerWithIdentifier("MemeNavigationController") as! UINavigationController
@@ -47,6 +65,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func applicationWillTerminate(application: UIApplication) {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
+	
+	
 
 
 }

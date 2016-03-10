@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 
 class MemeViewController: UIViewController {
 	
@@ -29,6 +29,10 @@ class MemeViewController: UIViewController {
 	var memedImage: UIImage?
 	var keyboardUp: Bool = false
 	typealias UIActivityViewControllerCompletionWithItemsHandler = (String!, Bool, [AnyObject]!, NSError!) -> Void
+	
+	lazy var sharedContext: NSManagedObjectContext = {
+		CoreDataStackManager.sharedInstance().managedObjectContext
+	}()
 	
 	//meme text attributes
 	let memeTextAttributes = [
@@ -251,8 +255,10 @@ class MemeViewController: UIViewController {
 	
 	//save meme
 	func saveMeme() {
-		let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: generateMeme())
+		
+		let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: generateMeme(), context: sharedContext)
 		(UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
+		CoreDataStackManager.sharedInstance().saveContext()
 	}
 	
 	//MARK: - share the meme

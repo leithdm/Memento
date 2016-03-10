@@ -15,6 +15,8 @@
 		0189809F1C6226E600CC4C03 /* MementoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0189809E1C6226E600CC4C03 /* MementoTests.swift */; };
 		018980AA1C6226E600CC4C03 /* MementoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018980A91C6226E600CC4C03 /* MementoUITests.swift */; };
 		018DB5141C64E31400ED9100 /* MemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018DB5131C64E31400ED9100 /* MemeCollectionViewCell.swift */; };
+		01991A3E1C9186CC007AA48C /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01991A3D1C9186CC007AA48C /* CoreDataStackManager.swift */; };
+		01991A411C918A98007AA48C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01991A3F1C918A98007AA48C /* Model.xcdatamodeld */; };
 		01A963E51C650A7E00F175EE /* DetailMemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A963E41C650A7E00F175EE /* DetailMemeViewController.swift */; };
 		01B5106A1C639D0F00469BC1 /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B510691C639D0F00469BC1 /* RandomColor.swift */; };
 		01B5106C1C639D2300469BC1 /* Hue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B5106B1C639D2300469BC1 /* Hue.swift */; };
@@ -57,6 +59,8 @@
 		018980A91C6226E600CC4C03 /* MementoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MementoUITests.swift; sourceTree = "<group>"; };
 		018980AB1C6226E600CC4C03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		018DB5131C64E31400ED9100 /* MemeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewCell.swift; sourceTree = "<group>"; };
+		01991A3D1C9186CC007AA48C /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
+		01991A401C918A98007AA48C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		01A963E41C650A7E00F175EE /* DetailMemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMemeViewController.swift; sourceTree = "<group>"; };
 		01B510691C639D0F00469BC1 /* RandomColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
 		01B5106B1C639D2300469BC1 /* Hue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hue.swift; sourceTree = "<group>"; };
@@ -167,7 +171,9 @@
 		01CC94041C63692D00893742 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				01991A3D1C9186CC007AA48C /* CoreDataStackManager.swift */,
 				01CC94021C63634100893742 /* Meme.swift */,
+				01991A3F1C918A98007AA48C /* Model.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -329,11 +335,13 @@
 				01B5106A1C639D0F00469BC1 /* RandomColor.swift in Sources */,
 				01B510701C639D5E00469BC1 /* Luminosity.swift in Sources */,
 				01B510B31C64C09E00469BC1 /* MemeTableViewController.swift in Sources */,
+				01991A3E1C9186CC007AA48C /* CoreDataStackManager.swift in Sources */,
 				01A963E51C650A7E00F175EE /* DetailMemeViewController.swift in Sources */,
 				01B5106E1C639D4200469BC1 /* ColorDefinition.swift in Sources */,
 				01B510B11C64C03C00469BC1 /* MemeCollectionViewController.swift in Sources */,
 				01CC94031C63634100893742 /* Meme.swift in Sources */,
 				0189808C1C6226E500CC4C03 /* MemeViewController.swift in Sources */,
+				01991A411C918A98007AA48C /* Model.xcdatamodeld in Sources */,
 				0189808A1C6226E500CC4C03 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,6 +592,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		01991A3F1C918A98007AA48C /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				01991A401C918A98007AA48C /* Model.xcdatamodel */,
+			);
+			currentVersion = 01991A401C918A98007AA48C /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0189807E1C6226E400CC4C03 /* Project object */;
 }

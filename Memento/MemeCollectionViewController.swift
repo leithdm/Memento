@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 private let reuseIdentifier = "MemeCollectionViewCell"
 
@@ -14,6 +15,10 @@ class MemeCollectionViewController: UICollectionViewController  {
 	
 	@IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
 	var memes: [Meme]!
+	
+	lazy var sharedContext: NSManagedObjectContext = {
+		return CoreDataStackManager.sharedInstance().managedObjectContext
+	}()
 	
 	//MARK: - Lifecycle methods
 	override func viewDidLoad() {
@@ -30,16 +35,24 @@ class MemeCollectionViewController: UICollectionViewController  {
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "createMeme")
 	}
 	
+	//MARK: - fetch memes from database
+	
+	func fetchMemes() -> [Meme] {
+		let fetchRequest = NSFetchRequest(entityName: "Meme")
+		
+		do {
+			return try sharedContext.executeFetchRequest(fetchRequest) as! [Meme]
+		} catch {
+			return [Meme]()
+		}
+	}
+	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
+		//fetch memes from database
+		memes = fetchMemes()
 		collectionView!.reloadData()
-		
-		//shared Meme data model
-		let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-		memes = applicationDelegate.memes
-		
-
 	}
 	
 	//MARK: - create a new meme
@@ -69,7 +82,7 @@ class MemeCollectionViewController: UICollectionViewController  {
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionViewCell", forIndexPath: indexPath) as! MemeCollectionViewCell
 		let meme = memes[indexPath.row]
 		
-		cell.memeImage.image = meme.originalImage
+		cell.memeImage.image = UIImage(data: meme.originalImage)
 		cell.memeTopText!.text = meme.topText
 		cell.memeBottomText!.text = meme.bottomText
 		
