@@ -1,6 +1,6 @@
 # Memento
 
-##An app that enables a user to:
+## An app that enables a user to:
 - take a photo/use an existing picture
 - add text at the top and bottom to form a meme
 - share that meme on Facebook, Twitter, SMS, email, etc.
